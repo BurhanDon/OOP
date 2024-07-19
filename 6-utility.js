@@ -6,7 +6,6 @@
 //Functions built inside the classes are called Methods.
 //Variables created Inside the constructors are called properties.
 
-
 /*
 class Config {
   static dbUser = "UserName";
@@ -18,8 +17,6 @@ const userrr = new Config();
 
 console.log(Config.dbPass);
 */
-
-
 
 class User {
   static id = 1;
@@ -50,26 +47,42 @@ class User {
 
   /* methods with static keywords cannot be called by Instances e.g
   user1.ComparebyIncome(), becuase they have no relation with each other they are stored
-  in Classes not in Instances
+  in Classes not in Instances.
   */
 
   static CompareByIncome(user1, user2) {
     return user1.income - user2.income;
   }
 
-  // 'this' keyword work on static methods only when the property is also static
+  // checkCache() {}
+
+
+  //this static block will run only once after a static method is called.
+  static {
+    console.log("Initialized");
+  }
+
+  // 'this' keyword work on static methods only when the property is also static.
   static hasInCache() {
-    console.log(this.Cache);
+    console.log(User.Cache);
   }
 }
 
 User.hasInCache();
+User.hasInCache();
+
+// const cacheUser = new User("Cache User", 16, 350);
+
+// cacheUser.checkCache();
+
+// console.log(cacheUser.checkCache());
 
 const user1 = new User("Burhan", 18, 600); //users created (which uses classes) are called Instances.
 
 const user2 = new User("Raqeeb", 25, 200); //Instances have no relation with Static methods.
 
 const user3 = new User("Jalal", 21, 400);
+
 // Normal Properties are added to Instances created but Static Properties and methods will not.
 
 const users = [user1, user2, user3];
